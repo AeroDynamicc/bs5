@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Registreerimine</title>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .description {
+      margin-top: 20px;
+    }
+    .custom-control-label::before {
+      border: 1px solid #28a745;
+    }
+    .custom-control-input:checked ~ .custom-control-label::before {
+      background-color: #28a745;
+      border-color: #28a745;
+    }
+    .custom-control-input:checked ~ .custom-control-label::after {
+      color: #ffffff;
+    }
+    .btn-success {
+      background-color: #28a745;
+      border: none;
+    }
+    .btn-success:hover {
+      background-color: #218838;
+    }
+    .text-danger, .text-success {
+      display: none;
+      font-size: 80%;
+    }
+    .form-group input:focus + .text-danger, .form-group input:focus + .text-success,
+    .form-group textarea:focus + .text-danger, .form-group textarea:focus + .text-success,
+    .form-check input:focus + .text-danger, .form-check input:focus + .text-success {
+      display: inline-block;
+    }
+    .form-group input.is-valid + .text-success,
+    .form-group textarea.is-valid + .text-success,
+    .form-check input.is-valid + .text-success {
+      display: inline-block;
+      color: #28a745;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Registreerimine</h2>
+
+  <form>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="firstName">Eesnimi</label>
+        <input type="text" class="form-control" id="firstName" required>
+        <small class="form-text text-danger">Palun täida</small>
+        <small class="form-text text-success">Korras</small>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="lastName">Perekonnanimi</label>
+        <input type="text" class="form-control" id="lastName" required>
+        <small class="form-text text-danger">Palun täida</small>
+        <small class="form-text text-success">Korras</small>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" required>
+        <small class="form-text text-danger">Palun täida</small>
+        <small class="form-text text-success">Korras</small>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="phone">Telefon</label>
+        <input type="tel" class="form-control" id="phone" required>
+        <small class="form-text text-danger">Palun täida</small>
+        <small class="form-text text-success">Korras</small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description">Kirjeldus</label>
+      <textarea class="form-control" id="description" rows="3" required></textarea>
+      <small class="form-text text-danger">Palun täida</small>
+      <small class="form-text text-success">Korras</small>
+    </div>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="privacyCheck" required>
+      <label class="form-check-label" for="privacyCheck">Olen tutvunud ja nõus privaatsustingimustega</label>
+      <small class="form-text text-danger">Palun täida</small>
+      <small class="form-text text-success">Korras</small>
+    </div>
+    <button type="submit" class="btn btn-success mt-3">Registreeru</button>
+  </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-XrVoqzq4FNJ8HXL9T9qFgDJ1mY6x3e2U8WlEyY7/Rae6p3AG5OeDZVMNLE5S9nt9" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy7RA0AdC63z5PcPUEs5IkwC+I5M1N4N" crossorigin="anonymous"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var formGroups = document.querySelectorAll('.form-group input, .form-group textarea');
+    formGroups.forEach(function (input) {
+      input.addEventListener('input', function () {
+        var isValid = input.checkValidity();
+        var textDanger = input.nextElementSibling.nextElementSibling; // Palun täida
+        var textSuccess = textDanger.nextElementSibling; // Korras
+
+        textDanger.style.display = isValid ? 'none' : 'inline-block';
+        textSuccess.style.display = isValid ? 'inline-block' : 'none';
+
+        if (isValid) {
+          input.classList.add('is-valid');
+        } else {
+          input.classList.remove('is-valid');
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
